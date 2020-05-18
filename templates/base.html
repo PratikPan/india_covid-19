@@ -1,0 +1,62 @@
+{% load static %}
+
+<!Doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+
+
+    <title>India Covid-19</title>
+  </head>
+  <body>
+    <div class="main">
+      <header>
+        <div class="header">
+          <h1>COVID19</h1>
+          <span>INDIA</span>
+        </div>
+      </header>
+      <div class="container">
+          {% block content %}
+          {% endblock %}
+      </div>
+
+      <footer>
+        <div class="footer">
+          <div class="menu">
+            <p>Created by Pratik S. Panchal</p>
+            <a
+              class="nav-a insta"
+              href="https://www.instagram.com/_pratik_panchal__/"
+              target="_blank"
+            ><i class="fa fa-instagram" aria-hidden="true"></i></a>            
+            <a
+              class="nav-a git"
+              href="https://github.com/PratikPan/"
+              target="_blank"
+            ><i class="fa fa-github" aria-hidden="true"></i></a>
+            <a
+              class="nav-a linkedin"
+              href="https://www.linkedin.com/in/pratik-panchal-003722161"
+              target="_blank"
+            ><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  </body>
+</html>

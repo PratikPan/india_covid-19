@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="stateTable table table-borderless table-responsive-sm">
+        {% for confirm in distData %}
+        {% if confirm.state == query %}
+        <tr class="head">
+            <th>District</th>
+            <td>Confirmed</td>
+            <td>Active</td>
+            <td>Recovered</td>
+            <td>Deceased</td>
+        </tr>
+        {% for distData in confirm.districtData %}
+        {% if distData.district != 'Other State' and distData.district != 'Unknow' %}
+        <tr class="body">
+            {% for distzones in zonesData.zones %}
+            {% if distData.district == distzones.district and confirm.state == distzones.state %}
+                {% if distzones.zone == "Red" %}
+                    <th style="background: rgba(175, 14, 52, 0.2);">{{ distData.district }}</th>
+                    <td>{{ distData.confirmed }}</td>
+                    <td>{{ distData.active }}</td>
+                    <td>{{ distData.recovered }}</td>
+                    <td>{{ distData.deceased }}</td>
+                {% elif distzones.zone == "Orange" %}
+                    <th style="background: rgba(174, 95, 27, 0.2);">{{ distData.district }}</th>
+                    <td>{{ distData.confirmed }}</td>
+                    <td>{{ distData.active }}</td>
+                    <td>{{ distData.recovered }}</td>
+                    <td>{{ distData.deceased }}</td>
+                {% else %}
+                    <th style="background: rgba(35, 118, 59, 0.2);">{{ distData.district }}</th>
+                    <td>{{ distData.confirmed }}</td>
+                    <td>{{ distData.active }}</td>
+                    <td>{{ distData.recovered }}</td>
+                    <td>{{ distData.deceased }}</td>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </table>
+{% endblock  %}

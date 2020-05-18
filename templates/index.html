@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p class="time">{{ currentTime }}</p>
+        <div class="row total">
+            <div class="col-3 confirmed">
+                <p>Confirmed &#128561;</p>
+                <span class="plus">+{{ totalData.total_values.deltaconfirmed }}</span><br />
+                <span>{{ totalData.total_values.confirmed }}</span>
+            </div>
+            <div class="col-3 active">
+                <p>Active &#128542;</p>
+                <span></span><br />
+                <span>{{ totalData.total_values.active }}</span>
+            </div>
+            <div class="col-3 recovered">
+                <p>Recovered &#128522;</p>
+                <span class="plus">+{{ totalData.total_values.deltarecovered }}</span><br />
+                <span>{{ totalData.total_values.recovered }}</span>
+            </div>
+            <div class="col-3 deceased">
+                <p>Deceased &#128557;</p>
+                <span class="plus">+{{ totalData.total_values.deltadeaths }}</span><br />
+                <span>{{ totalData.total_values.deaths }}</span>
+            </div>
+        </div>
+
+        <table class="stateTable table table-borderless table-responsive-sm">
+            
+            <tr class="head">
+                <th>State/UT</th>
+                <td>Confirmed</td>
+                <td>Active</td>
+                <td>Recovered</td>
+                <td>Deceased</td>
+            </tr>
+            {% for state in stateData.statewise|slice:"1:" %}
+            <tr class="body">
+                <th id="stateClick"><a href="/district_data?state_name={{ state.state|urlencode }}">{{ state.state }}</a></th>
+                <td>{{ state.confirmed }}</td>
+                <td>{{ state.active }}</td>
+                <td>{{ state.recovered }}</td>
+                <td>{{ state.deaths }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% comment %} {% for distzones in zonesData.zones %}
+        <p style="color: white;">{{ distzones.district }}</p>
+        {% endfor %} {% endcomment %}
+{% endblock %}
