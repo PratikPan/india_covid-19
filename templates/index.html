@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <table class="stateTable table table-borderless table-responsive-sm">
+        <table class="stateTable table table-striped table-borderless table-responsive-sm">
             
             <tr class="head">
                 <th>State/UT</th>
@@ -34,6 +34,7 @@
                 <td>Deceased</td>
             </tr>
             {% for state in stateData.statewise|slice:"1:" %}
+            {% if state.state != "State Unassigned" %}
             <tr class="body">
                 <th id="stateClick"><a href="/district_data?state_name={{ state.state|urlencode }}">{{ state.state }}</a></th>
                 <td>{{ state.confirmed }}</td>
@@ -41,6 +42,7 @@
                 <td>{{ state.recovered }}</td>
                 <td>{{ state.deaths }}</td>
             </tr>
+            {% endif %}
             {% endfor %}
         </table>
         {% comment %} {% for distzones in zonesData.zones %}

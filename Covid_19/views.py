@@ -5,7 +5,6 @@ from django.shortcuts import render, HttpResponse
 import requests
 import datetime
 from datetime import timedelta
-import get
 
 
 def index(request):

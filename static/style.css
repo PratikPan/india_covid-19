@@ -1,6 +1,6 @@
 body {
   background-color: #161625;
-  font-family: cursive;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .header {
@@ -16,6 +16,12 @@ body {
 .header span {
   color: lightblue;
   /* font-size: 25px; */
+}
+
+.title {
+  text-align: center;
+  color: white;
+  margin-top: 40px;
 }
 
 .time {
@@ -73,6 +79,11 @@ body {
 .body th {
   text-align: left;
   cursor: pointer;
+  color: #a3a9af;
+}
+
+.body td {
+  color: #7f8993;
 }
 
 .body a {
@@ -134,11 +145,8 @@ body {
   color: darkslategray;
 }
 
-/* .distbody th {
-} */
-
-/* 
-red = background: rgba(175, 14, 52, 0.2); 
+/*
+red = background: rgba(175, 14, 52, 0.2);
 orange = background: rgba(174, 95, 27, 0.2);
 green = background: rgba(35, 118, 59, 0.1);
 */
