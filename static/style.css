@@ -57,6 +57,12 @@ body {
   font-size: 20px;
 } */
 
+.fa-home {
+  margin-top: 30px;
+  color: antiquewhite;
+  font-size: 25px;
+}
+
 .stateTable {
   margin-top: 50px;
 }
