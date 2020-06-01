@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p class="time">{{ currentTime }}</p>
+        {% for total in stateData.statewise|slice:":1" %}
+        <p class="time">{{ total.lastupdatedtime }}</p>
         <div class="row total">
             <div class="col-3 confirmed">
                 <p>Confirmed &#128561;</p>
-                <span class="plus">+{{ totalData.total_values.deltaconfirmed }}</span><br />
-                <span>{{ totalData.total_values.confirmed }}</span>
+                <span class="plus"><i class="fa fa-angle-double-up"></i> {{ total.deltaconfirmed }}</span><br />
+                <span>{{ total.confirmed }}</span>
             </div>
             <div class="col-3 active">
-                <p>Active &#128542;</p>
+                <p>Active&nbsp; &#128542;</p>
                 <span></span><br />
-                <span>{{ totalData.total_values.active }}</span>
+                <span>{{ total.active }}</span>
             </div>
             <div class="col-3 recovered">
                 <p>Recovered &#128522;</p>
-                <span class="plus">+{{ totalData.total_values.deltarecovered }}</span><br />
-                <span>{{ totalData.total_values.recovered }}</span>
+                <span class="plus"><i class="fa fa-angle-double-up"></i> {{ total.deltarecovered }}</span><br />
+                <span>{{ total.recovered }}</span>
             </div>
             <div class="col-3 deceased">
                 <p>Deceased &#128557;</p>
-                <span class="plus">+{{ totalData.total_values.deltadeaths }}</span><br />
-                <span>{{ totalData.total_values.deaths }}</span>
+                <span class="plus"><i class="fa fa-angle-double-up"></i> {{ total.deltadeaths }}</span><br />
+                <span>{{ total.deaths }}</span>
             </div>
         </div>
+        {% endfor %}
 
         <table class="stateTable table table-striped table-borderless table-responsive-sm">
             
@@ -37,10 +39,34 @@
             {% if state.state != "State Unassigned" %}
             <tr class="body">
                 <th id="stateClick"><a href="/district_data?state_name={{ state.state|urlencode }}">{{ state.state }}</a></th>
-                <td>{{ state.confirmed }}</td>
+                <td>
+                    {% if state.deltaconfirmed != '0' %}
+                    <span style="color:red; margin-right: 15px; font-size: 18px;">
+                        <i class="fa fa-angle-double-up"></i>
+                        {{ state.deltaconfirmed }}
+                    </span>
+                    {% endif %}
+                    {{ state.confirmed }}
+                </td>
                 <td>{{ state.active }}</td>
-                <td>{{ state.recovered }}</td>
-                <td>{{ state.deaths }}</td>
+                <td>
+                    {% if state.deltarecovered != '0' %}
+                    <span style="color:green; margin-right: 15px; font-size: 18px;">
+                        <i class="fa fa-angle-double-up"></i>
+                        {{ state.deltarecovered }}
+                    </span>
+                    {% endif %}
+                    {{ state.recovered }}
+                </td>
+                <td>
+                    {% if state.deltadeaths != '0' %}
+                    <span style="color:gray; margin-right: 15px; font-size: 18px;">
+                        <i class="fa fa-angle-double-up"></i>
+                        {{ state.deltadeaths }}
+                    </span>
+                    {% endif %}
+                    {{ state.deaths }}
+                </td>
             </tr>
             {% endif %}
             {% endfor %}
